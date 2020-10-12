@@ -131,3 +131,5 @@ others/
 .piolibdeps
 
 mqtt-client-arduino/.pio/
+
+db/data/

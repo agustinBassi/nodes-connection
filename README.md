@@ -70,11 +70,65 @@ Once the client is correctly connected to the broker, the next step is to connec
 
 Within MQTT host, send a test topic->payload from the tool `mosquitto_pub` installed into `mosquitto` container. Execute the command below.
 
-```
+```sh
 docker exec -it mosquitto mosquitto_pub -t "mq-connection/cli-topic" -m "test-payload"
 ```
 
 In the web client the topic->payload pair must be shown.
+
+## 
+## Useful commands
+
+
+#ejecutar el container de node red con la interfaz de red del host
+```sh
+docker run \
+-it \
+-p 1880:1880 \
+-v /home/juan.bassi/personalProjects/docker/node-red/node-modules:/data \
+--name node-red \
+--network host \
+nodered/node-red-docker
+```
+
+Ejecutar el container de mosquitto con la interfaz de red del host.
+
+```sh
+docker run -it -p 1883:1883 -p 9001:9001 --network host eclipse-mosquitto
+```
+
+Ejecutar el container de maria-db con la interfaz de red del host.
+
+```sh
+docker run \
+--name mariadb \
+-e MYSQL_ROOT_PASSWORD=root_pass \
+-d \
+--network host \
+mariadb:latest
+```
+
+Ejecutar PHP ADMIN
+```sh
+docker run \
+--name phpadmin \
+-it \
+--network host \
+-e PMA_HOST=localhost \
+-e PMA_PORT=3306 \
+-e PMA_USER=root \
+-e PMA_PASSWORD=root_pass \
+-p 8080:80 \
+phpmyadmin/phpmyadmin
+```
+
+Ejecuta postgress en el puerto 5432.
+
+```sh
+docker run --name postgres -e POSTGRES_PASSWORD=root_pass -d postgres
+docker run --name phpadmin --link postgres:postgres -it phpmyadmin/phpmyadmin
+```
+
 
 ## 
 ## Want to help?
