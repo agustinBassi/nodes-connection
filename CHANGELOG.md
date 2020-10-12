@@ -1,6 +1,6 @@
 ![header](doc/images/generals/header.png)
 
-# MQ Connection Changes Log
+# Nodes Connection Changes Log
 
 All notable changes to this project will be documented in this file.
 
