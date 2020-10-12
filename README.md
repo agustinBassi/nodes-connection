@@ -1,6 +1,6 @@
 ![header](doc/header.png)
 
-# Open source MQTT Platform
+# Open source IoT Multiprotocol Dashboard Application using Docker COmpose
 
 Author: Agustin Bassi - 2020
 
@@ -19,15 +19,13 @@ Author: Agustin Bassi - 2020
 ## 
 ## Platform Description
 
-The goal of this project is to create an open source MQTT Platform to be used as a part of an IoT system, based on MQTT protocol.
+The goal of this project is ...
 
-The platform consists in several modules described below (All of them are well described in the [Project Wiki](https://github.com/agustinBassi/mq-connection/wiki)).
+The platform consists in several modules described below.
 
 * **MQTT Broker**: Raspberry Pi that runs a MQTT Broker to interact with the HTTP client via WebSockets and to MQTT clients via MQTT protocol. Besides, has a HTTP server in order to serve the page of the HTTP Client.
-* **MQTT Client Web**: A Single Page Application (SPA) that communicates with MQTT Broker via Websockets. It can send and receive MQTT topics and perform many actions. The code used for MQTT connection is based on [this project](https://github.com/jpmens/simple-mqtt-websocket-example).
-* **MQTT Client Arduino**: A device that connects to MQTT Broker in order to establish a connection to send/receive topics. The device connects to WiFi and then, connects to the MQTT Broker. 
 
-In the figure below there is a description of the platform modules and how they interact each others.
+In the figure below there is a description of the application modules and how they interact each others.
 
 ![architecture](doc/architecture.png)
 
@@ -51,17 +49,17 @@ Once dependencies are installed in the Raspberry Pi do the next steps.
 1. Download the platform code (this repository) with the next command.
 
 ```
-git clone https://github.com/agustinBassi/mq-connection.git
-cd mq-connection/
+git clone https://github.com/agustinBassi/nodes-connection.git
+cd nodes-connection/
 ```
 
-2. Start the MQTT Broker and the HTTP server with the next command.
+2. Start the application with the next command.
 
 ```
 docker-compose up
 ```
 
-3. Run the MQTT Web Client opening [http://raspberri_pi_ip:5001/](http://raspberri_pi_ip:5001/) in the web browser.
+3. Go to application's dashboard opening [http://host_ip:5001/](http://host_ip:5001/) in the web browser.
 
 ## 
 ## Test the application
@@ -77,29 +75,6 @@ docker exec -it mosquitto mosquitto_pub -t "mq-connection/cli-topic" -m "test-pa
 ```
 
 In the web client the topic->payload pair must be shown.
-
-## 
-## Run mqtt-client-arduino (optional)
-
-To run the `mqtt-client-arduino` it is necessary to have installed [PlatformIO](https://platformio.org/) in order to compile the project and upload the code into the board. In [this link](https://iot-es.herokuapp.com/post/details/17) there is a guide to install PlatformIO for Visual Studio Code, compile and run a project. More details in the [Project Wiki](https://github.com/agustinBassi/mq-connection/wiki).
-
-Once PlatformIO is installed, set WiFi access and MQTT host IP address properly (the IP of the Raspberry Pi) in the file `mqtt-client-arduino/src/main.cpp` as follow (lines 48-52).
-
-```c
-// Wifi settings
-const String WIFI_SSID   = "USER_WIFI_SSID";
-const String WIFI_PASS   = "USER_WIFI_PASSWORD";
-// Mqtt server settings
-const String MQTT_SERVER = "MQTT_HOST_IP_ADDRESS";
-```
-
-Then, plug the embedded device via USB and run the command below to compile and upload the code into the board (Change `platformio` for `pio` if command fails).
-
-```sh
-platformio run --target upload
-```
-
-Finally, open a serial terminal with settings 115200-N-8 in the correct port to see `mqtt-client-arduino` running.
 
 ## 
 ## Want to help?
