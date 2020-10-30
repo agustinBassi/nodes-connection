@@ -76,7 +76,7 @@ The dashboard gets two-ways communication: from devices to dashboard & from dash
 Once the Node-RED dashboard is running (previous step), publish a message using the mosquitto_pub client which are bundled into the Mosquitto Docker container with the next command:
 
 ```sh
-docker exec -it mosquitto mosquitto_pub -t "device/status/esp32-001" -m "{'temperature': 19, 'humidity': 77}"
+docker exec -it mosquitto mosquitto_pub -t "device/status/esp32-001" -m '{"temperature": 19, "humidity": 77}'
 ```
 
 After the MQTT topic is published, the values must be shown in the dashboard. Publish other values to see them in the chart widgets. 
