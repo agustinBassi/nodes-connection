@@ -1,6 +1,6 @@
 ![header](doc/header.png)
 
-# IoT Multiprotocol Dashboard
+# Nodes connection
 
 Author: Agustin Bassi - 2020
 
@@ -19,15 +19,15 @@ Author: Agustin Bassi - 2020
 ## 
 ## Platform Description
 
-The goal of this project is to create an IoT multiprotocol dashboard based in Node-RED and running it with Docker Compose.
+This project is an IoT multiprotocol dashboard based in Node-RED and running using Docker Compose.
 
 The platform consists in several modules described below.
 
-* **Node-RED**: Node-RED is a platform to easily develop IoT application based in a powerful visual programming blocks. It was developed by IBM and now maintainer by a huge community.
-* **MQTT Broker**: Raspberry Pi that runs a MQTT Broker to interact with the HTTP client via WebSockets and to MQTT clients via MQTT protocol. Besides, has a HTTP server in order to serve the page of the HTTP Client.
-* **MQTT Device** (optional): An embedded firmware running in Arduino based boards which supports MQTT like ESP32 or ESP8266. This piece of the project is optional and whole features can be tested via terminal.
+* **Node-RED App**: Node-RED is a platform to easily develop IoT application based in a powerful visual programming blocks. The dashboard is created using Node-RED as base.
+* **MQTT Broker**: The Mosquitto broker running into the application is used to receive messages from remote device and visualize this information into the dashboard. Besides it is used to send messages from dashboard to device.
+* **MQTT Device** (optional): An embedded application that runs in any platform with Wifi & MQTT support which sends measurments of humidity and temperature periodically to visualize them in the dashboard. This piece of the project because the dashboard can works without it. More details in its [README file](https://github.com/agustinBassi/nodes-connection-mqtt-device).
 
-In the figure below there is a description of the application modules and how they interact each others.
+In the figure below there is a description of the full application modules and how they interact each others.
 
 ![architecture](doc/architecture.png)
 
@@ -63,13 +63,13 @@ docker-compose up
 
 3. Go to application's dashboard opening [http://host_ip:1880/ui](http://host_ip:1880/ui) in the web browser. You should see a dashboard like below.
 
-![architecture](doc/architecture.png)
+![architecture](doc/dashboard-running.png)
 
 
 ## 
 ## Test the application
 
-The dashboard gets two-ways communication: from devices to dashboard & from dashboard to devices.
+The dashboard have two-ways communication: from devices to dashboard & from dashboard to devices.
 
 ### From Devices to dashboard
 
@@ -90,11 +90,6 @@ docker exec -it mosquitto mosquitto_sub -t "#"
 ```
 
 Then, in the `MQTT Messages` section in the dashboard, set a topic to send, a message and press `Publish`. The content of the message should be shown into the terminal where the mosquitto_sub command was executed.
-
-
-## 
-## Useful commands
-
 
 
 ## 
