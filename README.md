@@ -8,16 +8,14 @@ Author: Agustin Bassi - 2020
 ## Table of Contents
 
 
-* [Platform Introduction](#platform-introduction)
+* [Introduction](#introduction)
 * [Install dependencies](#install-dependencies)
 * [Run the application](#run-the-application)
 * [Test the application](#test-the-application)
-* [Run mqtt-client-arduino (optional)](#run-mqtt-client-arduino-(optional))
 * [Want to help?](#want-to-help-?)
 * [License](#license)
 
-## 
-## Platform Description
+## Introduction
 
 This project is an IoT multiprotocol dashboard based in Node-RED and running using Docker Compose.
 
@@ -31,7 +29,6 @@ In the figure below there is a description of the full application modules and h
 
 ![architecture](doc/architecture.png)
 
-## 
 ## Install dependencies
 
 
@@ -43,7 +40,6 @@ The platform needs the next dependencies.
 
 _Although the application is designed to run on a Raspberry Pi 3+, it can runs on any system with Docker & Docker Compose installed. Docker installation steps in [official documentation](https://docs.docker.com/get-docker/). Docker-Compose installation steps in [official documentation](https://docs.docker.com/compose/install/)._
 
-## 
 ## Run the application
 
 Once dependencies are installed in the Raspberry Pi do the next steps.
@@ -66,7 +62,6 @@ docker-compose up
 ![architecture](doc/dashboard-running.png)
 
 
-## 
 ## Test the application
 
 The dashboard have two-ways communication: from devices to dashboard & from dashboard to devices.
@@ -92,14 +87,12 @@ docker exec -it mosquitto mosquitto_sub -t "#"
 Then, in the `MQTT Messages` section in the dashboard, set a topic to send, a message and press `Publish`. The content of the message should be shown into the terminal where the mosquitto_sub command was executed.
 
 
-## 
 ## Want to help?
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. If someone want to helpme, every bit of effort will be appreciated. 
 
 If you find it useful please helpme following my Github user and give a Star to this project. This will animate me to continue contribuiting with the great open source community.
 
-## 
 ## License
 
 This project is licensed under the GPLV3 License.
