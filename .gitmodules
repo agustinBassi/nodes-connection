@@ -1,0 +1,3 @@
+[submodule "mqtt-device"]
+	path = mqtt-device
+	url = https://github.com/agustinBassi/nodes-connection-mqtt-device.git
