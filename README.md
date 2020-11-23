@@ -25,6 +25,8 @@ The platform consists in several modules described below.
 * **MQTT Broker**: The Mosquitto broker running into the application is used to receive messages from remote device and visualize this information into the dashboard. Besides it is used to send messages from dashboard to device.
 * **MQTT Device** (optional): An embedded application that runs in any platform with Wifi & MQTT support which sends measurments of humidity and temperature periodically to visualize them in the dashboard. This piece of the project because the dashboard can works without it. More details in its [README file](https://github.com/agustinBassi/nodes-connection-mqtt-device).
 
+All of this parts are well described in the [Project Wiki](https://github.com/agustinBassi/nodes-connection/wiki). Please, refer to it in order to get all required information.
+
 In the figure below there is a description of the full application modules and how they interact each others.
 
 ![architecture](doc/architecture.png)
@@ -89,9 +91,11 @@ Then, in the `MQTT Messages` section in the dashboard, set a topic to send, a me
 
 ## Want to help?
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. If someone want to helpme, every bit of effort will be appreciated. 
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-If you find it useful please helpme following my Github user and give a Star to this project. This will animate me to continue contribuiting with the great open source community.
+If someone want to helpme, every bit of effort will be appreciated. In [this link](https://github.com/agustinBassi/nodes-connection/projects/1) there is the project status board. You can take any card you want (or propose one) from the ToDo list and start to work.
+
+If you find it useful please helpme following my Github user and give to this project a Star. This will animate me to continue contribuiting with the great open source community.
 
 ## License
 
